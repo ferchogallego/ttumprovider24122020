@@ -1,0 +1,7 @@
+{
+  "name": "tutum-proveedor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
