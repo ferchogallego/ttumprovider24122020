@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{nombre | titlecase}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-img [src]="imagen"></ion-img>
+    <ion-item>
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        <p>{{nombre | titlecase}}</p>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="star"></ion-icon>
+        <p>{{calificacion}}</p>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="location"></ion-icon>
+        <p>Ciudad: <b>{{ciudad | titlecase}}</b></p>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="map"></ion-icon>
+        <p>{{direccion}}</p>
+    </ion-item>
+    <div *ngIf="contacto">
+        <ion-item>
+            <ion-icon slot="start" name="call"></ion-icon>
+            <p>{{telefono}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="mail-unread"></ion-icon>
+            <p>{{email}}</p>
+        </ion-item>
+    </div>
+    <ion-item>
+        <p>{{descripcion}}</p>
+    </ion-item>
+    <ion-button shape="round" expand="block" (click)="abrirSolicitud()">Contratar con TUTUM</ion-button>
+    <ion-button shape="round" expand="block" fill="outline" (click)="activarDatos()">Contactar Directamente</ion-button>
+
+</ion-content>

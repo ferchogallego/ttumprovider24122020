@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Datos del Perfil</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="ion-text-center">
+        <img [src]="imagen" width="300" alt="">
+    </div>
+    <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>Nombre: <b>{{nombre | titlecase}}</b></ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="map"></ion-icon>
+        <ion-label>Ciudad: <b>{{ciudad | titlecase}}</b></ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="phone-portrait"></ion-icon>
+        <ion-label>Teléfono: <b>{{telefono}}</b></ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon slot="start" name="mail-unread"></ion-icon>
+        <ion-label>Email: <b>{{email}}</b></ion-label>
+    </ion-item>
+    <ion-item>
+        <p>{{descripcion}}</p>
+    </ion-item>
+    <ion-button shape="round" expand="block" color="primary">Actualizar Datos</ion-button>
+    <ion-button shape="round" expand="block" fill="outline" color="primary">Modificar Contraseña</ion-button>
+
+</ion-content>

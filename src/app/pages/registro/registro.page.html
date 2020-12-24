@@ -1,0 +1,100 @@
+<ion-content>
+    <div class="wrapper">
+        <div class="wrapper__encabezado">
+            <div class="wrapper__encabezado--logo">
+            </div>
+        </div>
+
+        <div class="wrapper__negro"></div>
+        <div class="wrapper__arriba"></div>
+        <div class="wrapper__abajo"></div>
+
+        <div class="wrapper__container">
+            <div class="wrapper__container--content">
+
+                <h4 class="titulo">Registro Proveedor de Servicios</h4>
+                <form [formGroup]="registerPerson" (ngSubmit)="onRegisterPerson(registerPerson.value)">
+                    <div *ngIf="!secondPart" class="datos">
+                        <ion-grid>
+                            <ion-col>
+                                <ion-input class="entradaForm entradaNombre" placeholder="Nombre Completo" formControlName="name" [class.is-invalid]="nameNoValido"></ion-input>
+                                <small *ngIf="nameNoValido">Debe ingresar su nombre completo.</small>
+                            </ion-col>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-input class="entradaForm entradaPais" formControlName="country" disabled></ion-input>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-input class="entradaForm entradaPai" placeholder="Ciudad" formControlName="city" [class.is-invalid]="cityNoValido"></ion-input>
+                                    <small *ngIf="cityNoValido">Debe ingresar la ciudad de residencia.</small>
+                                </ion-col>
+                            </ion-row>
+                            <ion-col>
+                                <ion-input class="entradaForm entradaMail" placeholder="E-mail" formControlName="email" [class.is-invalid]="emailNoValido"></ion-input>
+                                <small *ngIf="emailNoValido">Debe ingresar un email válido.</small>
+                            </ion-col>
+                            <ion-col>
+                                <ion-input class="entradaForm entradaTel" placeholder="Teléfono" formControlName="phone" [class.is-invalid]="phoneNoValido"></ion-input>
+                                <small *ngIf="phoneNoValido">Debe ingresar número de contacto válido.</small>
+                            </ion-col>
+                            <ion-col>
+                                <ion-input type="password" class="entradaForm entradaPass" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNoValido"></ion-input>
+                                <small *ngIf="passwordNoValido">La contraseña debe ser mínimo de 8 caracteres.</small>
+                            </ion-col>
+                        </ion-grid>
+                    </div>
+                    <div *ngIf="secondPart" class="datos">
+                        <ion-item>
+                            <ion-label>Seleccione Categoria:</ion-label>
+                            <ion-select placeholder="Seleccionar" class="entradaForm entradaNombre" formControlName="categoria" [class.is-invalid]="categoriaNoValido">
+                                <ion-select-option *ngFor="let item of lista" [value]="item.nombre">{{item.nombre}}</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <small *ngIf="categoriaNoValido">Seleccione una categoría.</small>
+                        <ion-item>
+                            <ion-label>Servicios:</ion-label>
+                            <ion-textarea formControlName="descripcion" rows="4" cols="20" placeholder="Descripción de sus servicios..." [class.is-invalid]="descripcionNoValido"></ion-textarea>
+                        </ion-item>
+                        <small *ngIf="descripcionNoValido">Ingrese la descripción de sus servicios.</small>
+                        <ion-item>
+                            <input type="file" name="file" id="file" class="fileInput" formControlName="imagen" (change)="handleImage($event)" />
+                            <label for="file"><img src="../../../assets/img/avatar.svg" width="50" alt=""> Seleccione imagen del perfil</label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-progress-bar [value]="(uploadPercent | async)/100"></ion-progress-bar>
+                        </ion-item>
+
+                    </div>
+                    <ion-grid class="btnActions">
+                        <ion-col>
+                            <button type="button" class="button btn btnAtras" (click)="cancelRegister()">
+                                <span class="icoElipse">
+                                    <ion-icon name="arrow-back-outline"></ion-icon>
+                                </span>
+            
+                                <span class="btnText">Cancelar</span>
+                            </button>
+                        </ion-col>
+                        <ion-col>
+                            <button type="button" *ngIf="!secondPart" class="button btn btnAdelante" (click)="activarSecondPart()">
+                                <span class="btnText">Continuar</span>
+                                <span class="icoElipse">
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </span>
+                            </button>
+                        </ion-col>
+                        <ion-col>
+                            <button type="submit" *ngIf="secondPart" class="button btn btnAdelante">
+                                <span class="btnText">Guardar</span>
+                                <span class="icoElipse">
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </span>
+                            </button>
+                        </ion-col>
+                    </ion-grid>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

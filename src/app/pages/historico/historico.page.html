@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Historial de Solicitudes</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+
+        <ion-list class="wrapper__list">
+
+            <ion-list-header>
+                Solicitudes Pendientes:
+            </ion-list-header>
+
+            <ion-card *ngFor="let item of lista">
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <img src="../../../assets/img/solicitud.svg">
+                    </ion-avatar>
+                    <ion-label>{{item.city}}</ion-label>
+                </ion-item>
+
+                <ion-card-content>
+                    <ion-label><b>{{item.fecha | date}}.</b></ion-label>
+                    <br>
+                    <ion-label>Estado: <b>{{item.estado | titlecase}}.</b></ion-label>
+                    <br> {{item.descripcion}}.
+                </ion-card-content>
+            </ion-card>
+
+        </ion-list>
+
+
+
+    </div>
+</ion-content>

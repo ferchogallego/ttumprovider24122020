@@ -1,0 +1,45 @@
+<app-nav></app-nav>
+<ion-header>
+    <ion-toolbar>
+        <ion-menu-button slot="start" menu="first"></ion-menu-button>
+        <ion-title> Solicitudes </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen id="main">
+    <div class="wrapper">
+
+        <ion-list class="wrapper__list">
+
+            <ion-list-header>
+                Solicitudes Pendientes:
+            </ion-list-header>
+
+            <div *ngIf="cantidad == 0" class="ion-text-center">
+                <img src="../../../assets/img/alert.svg" width="200" alt="">
+                <br>
+                <h3>No tienes solicitudes pendientes</h3>
+            </div>
+
+            <ion-card *ngFor="let item of lista">
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <img src="../../../assets/img/solicitud.svg">
+                    </ion-avatar>
+                    <ion-label>{{item.city}}</ion-label>
+
+                    <ion-button (click)="cotizar(item)" fill="outline" slot="end">Cotizar</ion-button>
+                </ion-item>
+
+                <ion-card-content>
+                    <ion-label><b>{{item.fecha | date}}.</b></ion-label>
+                    <br>{{item.descripcion}}.
+                </ion-card-content>
+            </ion-card>
+
+        </ion-list>
+
+
+
+    </div>
+</ion-content>

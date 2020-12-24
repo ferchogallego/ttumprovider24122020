@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Envío Cotización</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <h4>Cotización de servicio:</h4>
+    <form [formGroup]="sendQuote" (ngSubmit)="loadQuote(sendQuote.value)">
+        <ion-item>
+            <ion-label position="floating">Tarifa base:</ion-label>
+            <ion-input type="number" formControlName="tarifa" [class.is-invalid]="tarifaNoValido"></ion-input>
+            <small *ngIf="tarifaNoValido">por favor ingresa el costo base del servicio.</small>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Descripción del servicio:</ion-label>
+            <ion-textarea cols="30" rows="4" formControlName="descripcion" [class.is-invalid]="descripcionNoValido"></ion-textarea>
+            <small *ngIf="descripcionNoValido">Debe ingresar la descripción.</small>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Revisión con costo:</ion-label>
+            <ion-select placeholder="Seleccione" formControlName="revision" [class.is-invalid]="revisionNoValido">
+                <ion-select-option value="si">Si</ion-select-option>
+                <ion-select-option value="no">No</ion-select-option>
+            </ion-select>
+            <small *ngIf="revisionNoValido">Debe seleccionar opción.</small>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Servicio Garantizado:</ion-label>
+            <ion-select placeholder="Seleccione" formControlName="garantia" [class.is-invalid]="garantiaNoValido">
+                <ion-select-option value="si">Si</ion-select-option>
+                <ion-select-option value="no">No</ion-select-option>
+            </ion-select>
+            <small *ngIf="garantiaNoValido">Debe seleccionar opción.</small>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-button type="submit" expand="block" size="large" shape="round">Enviar Cotización</ion-button>
+        </ion-item>
+    </form>
+</ion-content>
