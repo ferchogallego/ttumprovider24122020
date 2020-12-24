@@ -30,6 +30,10 @@
                                 </ion-col>
                             </ion-row>
                             <ion-col>
+                                <ion-input class="entradaForm entradaPai" placeholder="Direccion" formControlName="direccion" [class.is-invalid]="direccionNoValido"></ion-input>
+                                <small *ngIf="direccionNoValido">Debe ingresar la dirección.</small>
+                            </ion-col>
+                            <ion-col>
                                 <ion-input class="entradaForm entradaMail" placeholder="E-mail" formControlName="email" [class.is-invalid]="emailNoValido"></ion-input>
                                 <small *ngIf="emailNoValido">Debe ingresar un email válido.</small>
                             </ion-col>
@@ -37,13 +41,13 @@
                                 <ion-input class="entradaForm entradaTel" placeholder="Teléfono" formControlName="phone" [class.is-invalid]="phoneNoValido"></ion-input>
                                 <small *ngIf="phoneNoValido">Debe ingresar número de contacto válido.</small>
                             </ion-col>
-                            <ion-col>
-                                <ion-input type="password" class="entradaForm entradaPass" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNoValido"></ion-input>
-                                <small *ngIf="passwordNoValido">La contraseña debe ser mínimo de 8 caracteres.</small>
-                            </ion-col>
                         </ion-grid>
                     </div>
                     <div *ngIf="secondPart" class="datos">
+                        <ion-col>
+                            <ion-input type="password" class="entradaForm entradaPass" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNoValido"></ion-input>
+                            <small *ngIf="passwordNoValido">La contraseña debe ser mínimo de 8 caracteres.</small>
+                        </ion-col>
                         <ion-item>
                             <ion-label>Seleccione Categoria:</ion-label>
                             <ion-select placeholder="Seleccionar" class="entradaForm entradaNombre" formControlName="categoria" [class.is-invalid]="categoriaNoValido">

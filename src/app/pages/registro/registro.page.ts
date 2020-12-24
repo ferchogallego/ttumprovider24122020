@@ -24,6 +24,7 @@ export class RegistroPage implements OnInit {
     name: new FormControl('', Validators.required),
     country: new FormControl('Colombia'),
     city: new FormControl('', Validators.required),
+    direccion: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
     phone: new FormControl('', [Validators.required, Validators.minLength(8)]),
     registrado: new FormControl(new Date().getTime()),
@@ -31,7 +32,8 @@ export class RegistroPage implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     categoria: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required)
+    imagen: new FormControl('', Validators.required),
+    calificacion: new FormControl(0)
   });
 
   get nameNoValido() {
@@ -39,6 +41,9 @@ export class RegistroPage implements OnInit {
   }
   get cityNoValido() {
     return this.registerPerson.get('city').invalid && this.registerPerson.get('city').touched;
+  }
+  get direccionNoValido() {
+    return this.registerPerson.get('direccion').invalid && this.registerPerson.get('direccion').touched;
   }
   get emailNoValido() {
     return this.registerPerson.get('email').invalid && this.registerPerson.get('email').touched;
